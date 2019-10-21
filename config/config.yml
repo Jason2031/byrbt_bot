@@ -1,0 +1,75 @@
+bot_config:
+  # bot config uses relative path (based of working directory)
+  account:
+    user_name: user_name
+    password: password
+  model_location: model/captcha_classifier.pkl
+  logger_location: log
+  cookie_location: cookie
+  torrent:
+    save_location: torrent  # torrent seed files location
+    delete_after_activation: false
+
+external_config:
+  # external config uses absolute path
+  torrent_location:
+    # locations where to download the torrent
+    # predefined location tags, don't change the tag key
+    movie: ~/byrbt/movies
+    episode: ~/byrbt/episodes
+    anime: ~/byrbt/animes
+    music: ~/byrbt/music
+    show: ~/byrbt/shows
+    game: ~/byrbt/games
+    software: ~/byrbt/softwares
+    material: ~/byrbt/material
+    sport: ~/byrbt/sport
+    documentary: ~/byrbt/documentary
+    # customized location
+    default: ~/byrbt/default
+    tmp: ~/byrbt/tmp
+    shua: ~/byrbt/shua
+
+# don't edit below
+bt_config:
+  category:
+    # cat=[all]&secocat=[subcat]
+    movie:
+      name: 电影
+      all: 408
+    episode:
+      name: 剧集
+      all: 401
+    anime:
+      name: 动漫
+      all: 404
+    music:
+      name: 音乐
+      all: 402
+    show:
+      name: 综艺
+      all: 405
+    game:
+      name: 游戏
+      all: 403
+    software:
+      name: 软件
+      all: 406
+    material:
+      name: 资料
+      all: 407
+    sport:
+      name: 体育
+      all: 409
+    documentary:
+      name: 记录
+      all: 410
+  tag:
+    # spstate=[tag]
+    normal: 1
+    free: 2
+    twoup: 3 # 2 倍上传
+    twoupfree: 4
+    halfdown: 5  # 50% 下载
+    twouphalfdown: 6  # 50% 下载 & 2 倍上传
+    thirtypercent: 7 # 30% 下载

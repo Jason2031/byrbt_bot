@@ -1,0 +1,1 @@
+transmission-remote -a $1 -w $2
