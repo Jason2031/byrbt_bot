@@ -1,2 +1,8 @@
 
 *.pyc
+
+*.log
+
+cookie/
+
+torrent/

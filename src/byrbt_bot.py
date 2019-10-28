@@ -244,6 +244,8 @@ class ByrbtBot(object):
             sub = main_td.xpath('./br')
             sub_title = sub[0].tail if len(sub) > 0 else ''
             tags = set(main_td.xpath('./b/font/@class'))
+            is_seeding = len(main_td.xpath('./img[@src="pic/seeding.png"]')) > 0
+            is_finished = len(main_td.xpath('./img[@src="pic/finished.png"]')) > 0
             is_hot = False
             if 'hot' in tags:
                 is_hot = True
@@ -265,6 +267,10 @@ class ByrbtBot(object):
                 pretty_str += '【\033[1;31m热门\033[0m】'
             if tag != '':
                 pretty_str += '【\033[1;33m{}\033[0m】'.format(tag)
+            if is_seeding:
+                pretty_str += '【\033[1;36m做种中\033[0m】'
+            if is_finished:
+                pretty_str += '【\033[1;36m已完成\033[0m】'
             pretty_str += '\tid: {}\n\t{}'.format(seed_id, title)
             if sub_title != '':
                 pretty_str += '\n\t\t{}'.format(sub_title)
