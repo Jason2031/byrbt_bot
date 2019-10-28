@@ -336,15 +336,17 @@ class ByrbtBot(object):
         cat = detail_page.xpath('//span[@id="type"]')[0].xpath('./text()')[0]
         cat = self._get_cat(cat)
 
-        loc = re.findall(r' -l (.+)', op_str, re.I)
-        if len(loc) != 0:
+        loc_str = ''
+        if '-l' in op_str:
+            loc = re.findall(r' -l (.+)', op_str, re.I)
             try:
                 loc_str = self.config['external_config']['torrent_location'][loc[0]]
             except KeyError:
                 print('no such predefined location: {}'.format(loc[0]))
-                loc_str = ''
-        else:
+        elif '-c' in op_str:
             loc_str = re.findall(r' -c (.+)', op_str, re.I)
+        if loc_str == '':
+            loc_str = self.config['external_config']['torrent_location'][cat]
         loc_str = os.path.abspath(os.path.expanduser(loc_str))
         if not os.path.isdir(loc_str):
             print('not a dir path: {}, use category default loc'.format(loc_str))
